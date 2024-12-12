@@ -1,15 +1,19 @@
 import React, { useState } from "react";
 import { MdArrowDropDown } from "react-icons/md";
 import { MdArrowDropUp } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <nav className="bg-blue-400 flex justify-center items-center gap-80 py-4 shadow-[rgba(50,50,93,0.25)_0px_6px_12px_-2px,_rgba(0,0,0,0.3)_0px_3px_7px_-3px]">
-      <div className="flex gap-1 justify-center items-center ">
-        <img src="./logo.png" alt="logo" className="w-[50px] " />
-        <span className="font-bold text-white text-lg">NoteSpot</span>
-      </div>
+      <Link to="/">
+        <div className="flex gap-1 justify-center items-center ">
+          <img src="./logo.png" alt="logo" className="w-[50px] " />
+          <span className="font-bold text-white text-lg">NoteSpot</span>
+        </div>
+      </Link>
+
       <div>
         <input
           type="text"
@@ -19,9 +23,11 @@ const Header = () => {
       </div>
       <div className="flex gap-4">
         <div>
-          <button className="font-bold text-gray-100 hover:border-b">
-            My notes
-          </button>
+          <Link to="/mynotes">
+            <button className="font-bold text-gray-100 hover:border-b">
+              My notes
+            </button>
+          </Link>
         </div>
         <div className="relative">
           <button
