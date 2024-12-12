@@ -18,7 +18,7 @@ const Header = () => {
         <input
           type="text"
           placeholder="search here"
-          className="px-2 rounded shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] py-2"
+          className="px-2 font-medium rounded shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] py-2 w-[250px]"
         />
       </div>
       <div className="flex gap-4">
