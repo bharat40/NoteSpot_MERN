@@ -6,13 +6,13 @@ import Footer from "./components/Footer/Footer.jsx";
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-      </Routes>
-      <Footer />
-    </BrowserRouter>
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+        </Routes>
+        <Footer />
+        </BrowserRouter>
   );
 };
 
