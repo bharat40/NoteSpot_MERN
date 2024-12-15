@@ -1,2 +1,2 @@
-<!-- project tutorial #6
-timestamp 13:45 -->
+<!-- tutorial 8 completed
+connected backend and frontend -->

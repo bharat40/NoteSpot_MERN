@@ -1,10 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import MainScreen from "../components/MainScreen/MainScreen";
-import { notes } from "../data/notes.js";
+
 import Cards from "../components/MyNotes/Cards.jsx";
+import axios from "axios";
 
 const MyNotes = () => {
-  const [data, setData] = useState(notes);
+  const [notes, setNotes] = useState([]);
+  const fetchNotes = async () => {
+    const data = await axios.get("http://localhost:5000/api/notes");
+
+    setNotes(data.data);
+  };
+  useEffect(() => {
+    fetchNotes();
+  }, []);
   return (
     <div className="flex flex-col my-11 h-screen gap-5">
       <div className="flex justify-center">
@@ -15,7 +24,7 @@ const MyNotes = () => {
           <button className="bg-blue-400 h-[40px] hover:bg-blue-500 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] rounded px-2 py-1 text-white font-medium">
             CREATE NEW NOTE
           </button>
-          <img src="./mynotesimage.jpeg" alt="image" className="h-[70px]"/>
+          <img src="./mynotesimage.jpeg" alt="image" className="h-[70px]" />
         </div>
 
         <div className="flex flex-col gap-3 mt-7">
