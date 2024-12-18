@@ -1,2 +1,6 @@
-<!-- tutorial 8 completed
-connected backend and frontend -->
+<!--
+tutorial 9 completed
+MongoDB connected
+password database = 0eraDHo0FcWNFYhk
+connection string = mongodb+srv://bharatdhiman40:0eraDHo0FcWNFYhk@notespotcluster.k9bh4.mongodb.net/
+-->

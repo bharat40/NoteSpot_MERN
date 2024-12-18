@@ -1,7 +1,11 @@
 const express = require('express');
 const notes = require('./data/notes');
+const connectDatabase = require('./config/db');
 const app = express();
 require('dotenv').config();
+
+
+connectDatabase();
 
 app.get('/', (req, res) => {
     res.send('API is running...')
