@@ -7,6 +7,20 @@ const RegisterPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+
+  const textColor = () => {
+    if (!password && !confirmPassword) {
+      return ""; // No class applied when inputs are empty
+    }
+    return password === confirmPassword ? "text-green-500" : "text-red-500";
+  };
+
+  const message = () => {
+    if (!password && !confirmPassword) {
+      return ""; // No message when inputs are empty
+    }
+    return password === confirmPassword ? "Passwords matched" : "Passwords do not match";
+  };
   return (
     <div className="h-screen my-11">
       <div className="flex justify-center">
@@ -77,6 +91,10 @@ const RegisterPage = () => {
               className="px-2 py-1 border font-medium"
               placeholder="Confirm your password"
             />
+
+            <div className={`${textColor()}`}>
+              {message()}
+            </div>
           </div>
 
           <div className="flex flex-col gap-2">
