@@ -17,7 +17,7 @@ const MyNotes = () => {
   return (
     <div className="flex flex-col my-11 h-screen gap-5">
       <div className="flex justify-center">
-        <MainScreen title={"Welcome back Bharat"} />
+        <MainScreen title={"WELCOME BACK BHARAT"} />
       </div>
       <div className="px-[260px]">
         <div className="flex items-center justify-between">

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const LandingPage = () => {
   return (
@@ -15,9 +16,20 @@ const LandingPage = () => {
           <span className="font-semibold text-xl">
             Organize your life, one note at a time.
           </span>
-          <button className="bg-blue-400 px-2 py-1 rounded text-white font-semibold hover:bg-blue-500">
-            Sign up or log in to begin
-          </button>
+          <div className="flex items-center gap-3">
+            <Link to="/register">
+              <button className="bg-blue-400 px-2 py-1 rounded text-white font-semibold hover:bg-blue-500">
+                Register
+              </button>
+            </Link>
+            <span className="font-semibold text-xl">or</span>
+            <Link to="/login">
+              <button className="bg-blue-400 px-2 py-1 rounded text-white font-semibold hover:bg-blue-500">
+                Login
+              </button>
+            </Link>
+            <span className="font-semibold text-xl">to begin</span>
+          </div>
         </div>
       </div>
       <div className="flex items-center justify-center gap-[300px] w-[1300px]">
