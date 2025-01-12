@@ -1,38 +1,67 @@
 import React, { useState } from "react";
+import axios from "axios";
 import MainScreen from "../components/MainScreen/MainScreen.jsx";
 import { Link } from "react-router-dom";
+import ErrorMessage from "../components/Error/ErrorMessage.jsx";
 
 const RegisterPage = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-
-  const textColor = () => {
-    if (!password && !confirmPassword) {
-      return ""; // No class applied when inputs are empty
-    }
-    return password === confirmPassword ? "text-green-500" : "text-red-500";
-  };
-
-  const message = () => {
-    if (!password && !confirmPassword) {
-      return ""; // No message when inputs are empty
-    }
-    return password === confirmPassword
-      ? "Passwords matched"
-      : "Passwords do not match";
-  };
-
-  const handleSubmit = (e) => {
+  const [picture, setPicture] = useState(
+    "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg"
+  );
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(name, password, email);
+    if (!email || !name || !password || !confirmPassword) {
+      setError(
+        "Please fill in all the required fields: Email, Name, Password, and Confirm Password."
+      );
+      setTimeout(() => setError(false), 4000);
+      return;
+    }
+    if (password != confirmPassword) {
+      setError("Password and Confirm password do not match!");
+      setTimeout(() => setError(false), 4000);
+      return;
+    }
+
+    try {
+      const config = {
+        headers: {
+          "Content-type": "application/json",
+        },
+      };
+
+      setLoading(true);
+      // data fetch
+      const { data } = await axios.post(
+        "http://localhost:5000/api/users/",
+        { name, email, password, picture },
+        config
+      );
+      setLoading(false);
+      localStorage.setItem("userInfo", JSON.stringify(data));
+      console.log(data);
+    } catch (error) {
+      setError(error.response.data.message);
+      setLoading(false);
+      setTimeout(() => setError(false), 4000);
+    }
   };
   return (
     <div className="h-screen my-11">
       <div className="flex justify-center">
         <MainScreen title={"REGISTER"} />
       </div>
+      {error && (
+        <div className="flex justify-center my-4">
+          <ErrorMessage message={error} />
+        </div>
+      )}
       <div className="flex gap- px-[256px] items-center justify-between mt-[50px]">
         <form onSubmit={handleSubmit}>
           <div className="w-[500px] flex flex-col gap-6 bg-gray-100 p-3 rounded shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]">
@@ -100,7 +129,7 @@ const RegisterPage = () => {
                 placeholder="Confirm your password"
               />
 
-              <div className={`${textColor()}`}>{message()}</div>
+              {/* <div className={`${textColor()}`}>{message()}</div> */}
             </div>
 
             <div className="flex flex-col gap-2">
@@ -110,6 +139,16 @@ const RegisterPage = () => {
               <input
                 type="file"
                 name="picture"
+                onChange={(e) => {
+                  if (e.target.files && e.target.files[0]) {
+                    const file = e.target.files[0];
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                      setPicture(event.target.result);
+                    };
+                    reader.readAsDataURL(file);
+                  }
+                }}
                 id="picture"
                 accept="image/*"
                 className="px-2 py-1 border font-medium bg-white hover:cursor-pointer"
@@ -119,7 +158,7 @@ const RegisterPage = () => {
               type="submit"
               className="bg-blue-400 hover:bg-blue-500 text-white font-semibold rounded px-2 py-1"
             >
-              Submit
+              {loading ? "Registering..." : "Submit"}
             </button>
             <span>
               Existing User?{" "}
