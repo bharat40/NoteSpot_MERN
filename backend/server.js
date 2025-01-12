@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const notes = require('./data/notes');
 const connectDatabase = require('./config/db');
 const app = express();
@@ -7,6 +8,7 @@ const userRouter = require('./routes/userRouter');
 const { notFound, errorHandler } = require('./middlewares/errorMiddleware');
 
 app.use(express.json());
+app.use(cors());
 
 connectDatabase();
 
