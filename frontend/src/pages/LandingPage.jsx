@@ -2,6 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const LandingPage = () => {
+  // useEffect(() => {
+  //   const userInfo = localStorage.getItem("userInfo");
+  //   if (userInfo) {
+  //     history.push("/mynotes");
+  //   }
+  // }, [history]);
   return (
     <div className="my-11 flex flex-col justify-center items-center">
       <div className="flex items-center justify-center gap-[400px]">
