@@ -12,6 +12,11 @@ const LoginPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!email || !password) {
+      setError("Please fill in both the email and password fields!");
+      setTimeout(() => setError(false), 4000);
+      return;
+    }
     try {
       const config = {
         headers: {
@@ -116,4 +121,3 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
-
