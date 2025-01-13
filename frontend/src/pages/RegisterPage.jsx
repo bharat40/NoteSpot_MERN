@@ -128,32 +128,8 @@ const RegisterPage = () => {
                 className="px-2 py-1 border font-medium"
                 placeholder="Confirm your password"
               />
-
-              {/* <div className={`${textColor()}`}>{message()}</div> */}
             </div>
 
-            <div className="flex flex-col gap-2">
-              <label htmlFor="picture" className="font-bold">
-                Picture
-              </label>
-              <input
-                type="file"
-                name="picture"
-                onChange={(e) => {
-                  if (e.target.files && e.target.files[0]) {
-                    const file = e.target.files[0];
-                    const reader = new FileReader();
-                    reader.onload = (event) => {
-                      setPicture(event.target.result);
-                    };
-                    reader.readAsDataURL(file);
-                  }
-                }}
-                id="picture"
-                accept="image/*"
-                className="px-2 py-1 border font-medium bg-white hover:cursor-pointer"
-              />
-            </div>
             <button
               type="submit"
               className="bg-blue-400 hover:bg-blue-500 text-white font-semibold rounded px-2 py-1"
