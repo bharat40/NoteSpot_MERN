@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import MainScreen from "../components/MainScreen/MainScreen.jsx";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ErrorMessage from "../components/Error/ErrorMessage.jsx";
 
 const LoginPage = () => {
@@ -9,6 +9,8 @@ const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -37,6 +39,7 @@ const LoginPage = () => {
       localStorage.setItem("userInfo", JSON.stringify(data));
       setError(false);
       setLoading(false);
+      navigate("/mynotes");
     } catch (error) {
       setError(error.response.data.message || "An unexcepted error occurred!");
       setLoading(false);

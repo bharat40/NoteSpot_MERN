@@ -1,10 +1,16 @@
 import React, { useState } from "react";
 import { MdArrowDropDown } from "react-icons/md";
 import { MdArrowDropUp } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    localStorage.removeItem("userInfo");
+    navigate("/");
+    setIsOpen(false);
+  };
   return (
     <nav className="bg-blue-400 flex justify-center items-center gap-80 py-4 shadow-[rgba(50,50,93,0.25)_0px_6px_12px_-2px,_rgba(0,0,0,0.3)_0px_3px_7px_-3px]">
       <Link to="/">
@@ -46,7 +52,10 @@ const Header = () => {
               <button className="hover:bg-gray-200 w-full active:bg-gray-300">
                 Profile
               </button>
-              <button className="hover:bg-gray-200 w-full active:bg-gray-300">
+              <button
+                className="hover:bg-gray-200 w-full active:bg-gray-300"
+                onClick={handleLogout}
+              >
                 Logout
               </button>
             </div>
