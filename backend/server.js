@@ -5,6 +5,7 @@ const connectDatabase = require('./config/db');
 const app = express();
 require('dotenv').config();
 const userRouter = require('./routes/userRouter');
+const noteRoutes = require('./routes/noteRoutes');
 const { notFound, errorHandler } = require('./middlewares/errorMiddleware');
 
 app.use(express.json());
@@ -16,12 +17,13 @@ app.get('/', (req, res) => {
     res.send('API is running...');
 })
 
-app.get('/api/notes', (req, res) => {
-    res.json(notes);
-})
+// app.get('/api/notes', (req, res) => {
+//     res.json(notes);
+// })
 
 
 app.use('/api/users', userRouter);
+app.use('/api/notes', noteRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
@@ -33,7 +35,3 @@ app.listen(process.env.PORT, () => {
         console.log('error while starting server:', error);
     }
 })
-
-// custom error handler created (middleware created)
-// registerUser route created
-// hashed password function created

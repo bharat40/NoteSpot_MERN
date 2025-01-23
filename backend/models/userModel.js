@@ -23,7 +23,7 @@ const userSchema = mongoose.Schema({
         type: String,
         default: 'https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg'
     }
-}, timeStamps = true);
+}, {timestamps: true});
 
 userSchema.pre('save', async function (next) {
     if (!this.isModified('password')) {
