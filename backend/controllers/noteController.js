@@ -73,4 +73,16 @@ const deleteNote = asyncHandler(async (req, res) => {
     }
 })
 
-module.exports = { getNotes, createNote, updateNode, deleteNote };
+const deleteAll = asyncHandler(async (req, res) => {
+    try {
+        const deletedNotes = await Notes.deleteMany();
+        if (deletedNotes.deletedCount > 0) {
+            res.status(200).json({ message: "Sucessfully Deleted All Notes!" })
+        }
+    } catch (error) {
+        res.status(500);
+        throw new Error("Internal Server Error!");
+    }
+})
+
+module.exports = { getNotes, createNote, updateNode, deleteNote, deleteAll };
