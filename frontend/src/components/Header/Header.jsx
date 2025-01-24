@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MdArrowDropDown } from "react-icons/md";
 import { MdArrowDropUp } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,6 +11,16 @@ const Header = () => {
     localStorage.removeItem("userInfo");
     navigate("/");
     setIsOpen(false);
+  };
+  const handleRoute = () => {
+    const userInfo = localStorage.getItem("userInfo");
+    if (!userInfo) {
+      toast.error("Please Login!");
+    } else {
+      console.log("navigating to /mynotes");
+      navigate("/mynotes");
+      console.log("navigated to /mynotes");
+    }
   };
   return (
     <nav className="bg-blue-400 flex justify-center items-center gap-80 py-4 shadow-[rgba(50,50,93,0.25)_0px_6px_12px_-2px,_rgba(0,0,0,0.3)_0px_3px_7px_-3px]">
@@ -29,11 +40,12 @@ const Header = () => {
       </div>
       <div className="flex gap-4">
         <div>
-          <Link to="/mynotes">
-            <button className="font-bold text-gray-100 hover:border-b">
-              My notes
-            </button>
-          </Link>
+          <button
+            className="font-bold text-gray-100 hover:border-b"
+            onClick={handleRoute}
+          >
+            My notes
+          </button>
         </div>
         <div className="relative">
           <button

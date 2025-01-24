@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import MainScreen from "../components/MainScreen/MainScreen.jsx";
 import { Link, useNavigate } from "react-router-dom";
@@ -9,7 +9,6 @@ const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -35,7 +34,6 @@ const LoginPage = () => {
         },
         config
       );
-      console.log(data);
       localStorage.setItem("userInfo", JSON.stringify(data));
       setError(false);
       setLoading(false);
@@ -46,6 +44,7 @@ const LoginPage = () => {
       setTimeout(() => setError(false), 4000);
     }
   };
+
   return (
     <div className="h-screen my-11">
       <div className="flex justify-center">

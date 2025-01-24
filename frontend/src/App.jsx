@@ -6,12 +6,14 @@ const Footer = lazy(() => import("./components/Footer/Footer.jsx"));
 const MyNotes = lazy(() => import("./pages/MyNotes.jsx"));
 const LoginPage = lazy(() => import("./pages/LoginPage.jsx"));
 const RegisterPage = lazy(() => import("./pages/RegisterPage.jsx"));
+import { ToastContainer } from "react-toastify";
 
 import Loader from "./components/Loader/Loader.jsx";
 
 const App = () => {
   return (
     <BrowserRouter>
+      <ToastContainer position="top-center"  autoClose={1000} hideProgressBar={true} pauseOnHover={false} closeButton={false}/>
       <Header />
       <Routes>
         <Route
