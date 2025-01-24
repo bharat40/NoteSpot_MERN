@@ -3,12 +3,17 @@ import { MdArrowDropDown } from "react-icons/md";
 import { MdArrowDropUp } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useSelector, useDispatch } from "react-redux";
+import { removeUserName } from "../../features/username/UserSlice";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const username = useSelector((state) => state.username);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleLogout = () => {
     localStorage.removeItem("userInfo");
+    dispatch(removeUserName());
     navigate("/");
     setIsOpen(false);
   };
@@ -54,7 +59,7 @@ const Header = () => {
               setIsOpen(!isOpen);
             }}
           >
-            Bharat
+            {username || "user"}
             <span className="text-2xl">
               {isOpen ? <MdArrowDropUp /> : <MdArrowDropDown />}
             </span>

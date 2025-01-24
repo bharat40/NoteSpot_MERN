@@ -3,14 +3,16 @@ import axios from "axios";
 import MainScreen from "../components/MainScreen/MainScreen.jsx";
 import { Link, useNavigate } from "react-router-dom";
 import ErrorMessage from "../components/Error/ErrorMessage.jsx";
+import { setUserName } from "../features/username/UserSlice.js";
+import { useDispatch } from "react-redux";
 
 const LoginPage = () => {
+  const dispatch = useDispatch();
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const navigate = useNavigate();
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!email || !password) {
@@ -34,12 +36,15 @@ const LoginPage = () => {
         },
         config
       );
+      dispatch(setUserName(data.name || "Testing")); // dispatching user name from data object received from backend
       localStorage.setItem("userInfo", JSON.stringify(data));
       setError(false);
       setLoading(false);
       navigate("/mynotes");
     } catch (error) {
-      setError(error.response.data.message || "An unexcepted error occurred!");
+      setError(
+        error.response?.data?.message || "An unexcepted error occurred!"
+      );
       setLoading(false);
       setTimeout(() => setError(false), 4000);
     }

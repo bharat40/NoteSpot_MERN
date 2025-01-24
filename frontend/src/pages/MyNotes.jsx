@@ -2,14 +2,16 @@ import React, { useEffect, useState } from "react";
 import MainScreen from "../components/MainScreen/MainScreen";
 import Cards from "../components/MyNotes/Cards.jsx";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 const MyNotes = () => {
   const [notes, setNotes] = useState([]);
+  const username = useSelector((state) => state.username);
   const fetchNotes = async () => {
-    const userI = JSON.parse(localStorage.getItem("userInfo"));
+    const userInfo = JSON.parse(localStorage.getItem("userInfo"));
     const config = {
       headers: {
-        Authorization: `Bearer ${userI.token}`,
+        Authorization: `Bearer ${userInfo.token}`,
       },
     };
     const { data } = await axios.get("http://localhost:5000/api/notes", config);
@@ -21,7 +23,7 @@ const MyNotes = () => {
   return (
     <div className="flex flex-col my-11 h-screen gap-5">
       <div className="flex justify-center">
-        <MainScreen title={`WELCOME BACK BHARAT`} />
+        <MainScreen title={`WELCOME BACK ${username || "USER"}`} />
       </div>
       <div className="px-[260px]">
         <div className="flex items-center justify-between">
