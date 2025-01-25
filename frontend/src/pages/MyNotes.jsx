@@ -33,7 +33,7 @@ const MyNotes = () => {
           <img src="./mynotesimage.jpeg" alt="image" className="h-[70px]" />
         </div>
 
-        <div className="flex flex-col gap-3 mt-7">
+        <div className="flex flex-col gap-4 mt-7">
           {notes.map((n) => {
             return (
               <div key={n._id}>
@@ -41,6 +41,7 @@ const MyNotes = () => {
                   title={n.title}
                   content={n.content}
                   category={n.category}
+                  date={n.createdAt.substring(0, 10)}
                 />
               </div>
             );
