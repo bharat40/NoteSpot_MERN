@@ -3,17 +3,19 @@ import { MdArrowDropDown } from "react-icons/md";
 import { MdArrowDropUp } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { useSelector, useDispatch } from "react-redux";
-import { removeUserName } from "../../features/username/UserSlice";
+// import { useSelector, useDispatch } from "react-redux";
+// import { removeUserName } from "../../features/username/UserSlice";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const username = useSelector((state) => state.username);
-  const dispatch = useDispatch();
+  const [username, setUsername] = useState("");
+  // const username = useSelector((state) => state.username);
+  // const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleLogout = () => {
     localStorage.removeItem("userInfo");
-    dispatch(removeUserName());
+    setUsername("");
+    // dispatch(removeUserName());
     navigate("/");
     setIsOpen(false);
   };
@@ -27,6 +29,12 @@ const Header = () => {
       console.log("navigated to /mynotes");
     }
   };
+  useEffect(() => {
+    const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+    if (userInfo) {
+      setUsername(userInfo.name);
+    }
+  });
   return (
     <nav className="bg-blue-400 flex justify-center items-center gap-80 py-4 shadow-[rgba(50,50,93,0.25)_0px_6px_12px_-2px,_rgba(0,0,0,0.3)_0px_3px_7px_-3px]">
       <Link to="/">

@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import MainScreen from "../components/MainScreen/MainScreen";
 import Cards from "../components/MyNotes/Cards.jsx";
 import axios from "axios";
-import { useSelector } from "react-redux";
 
 const MyNotes = () => {
   const [notes, setNotes] = useState([]);
-  const username = useSelector((state) => state.username);
+  const [username, setUsername] = useState("");
+
   const fetchNotes = async () => {
     const userInfo = JSON.parse(localStorage.getItem("userInfo"));
     const config = {
@@ -18,6 +18,8 @@ const MyNotes = () => {
     setNotes(data);
   };
   useEffect(() => {
+    const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+    setUsername(userInfo.name);
     fetchNotes();
   }, []);
   return (
