@@ -9,8 +9,8 @@ const LandingPage = () => {
   //   }
   // }, [history]);
   return (
-    <div className="my-11 flex flex-col justify-center items-center">
-      <div className="flex items-center justify-center gap-[400px]">
+    <div className="my-11 min-h-screen flex flex-col  items-center">
+      <div className="flex items-center justify-center gap-[300px]">
         <div>
           <img src="./mainImage1.png" alt="img1" className="w-[400px]" />
         </div>
@@ -38,7 +38,7 @@ const LandingPage = () => {
           </div>
         </div>
       </div>
-      <div className="flex items-center justify-center gap-[300px] w-[1300px]">
+      <div className="flex items-center justify-center gap-[200px] w-[1300px]">
         <div className="font-semibold text-xl">
           {" "}
           Start capturing your thoughts, ideas, and plans in one <br />{" "}

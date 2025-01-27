@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import MainScreen from "../components/MainScreen/MainScreen";
 import Cards from "../components/MyNotes/Cards.jsx";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const MyNotes = () => {
   const [notes, setNotes] = useState([]);
   const [username, setUsername] = useState("");
-
+  const navigate = useNavigate();
   const fetchNotes = async () => {
     const userInfo = JSON.parse(localStorage.getItem("userInfo"));
     const config = {
@@ -22,6 +23,10 @@ const MyNotes = () => {
     setUsername(userInfo.name);
     fetchNotes();
   }, []);
+
+  const handleClick = () => {
+    navigate("/createnote");
+  };
   return (
     <div className="flex flex-col my-11 h-screen gap-5">
       <div className="flex justify-center">
@@ -29,7 +34,10 @@ const MyNotes = () => {
       </div>
       <div className="px-[260px]">
         <div className="flex items-center justify-between">
-          <button className="bg-blue-400 h-[40px] hover:bg-blue-500  rounded px-2 py-1 text-white font-medium">
+          <button
+            className="bg-blue-400 h-[40px] hover:bg-blue-500  rounded px-2 py-1 text-white font-medium"
+            onClick={handleClick}
+          >
             Create new note
           </button>
           <img src="./mynotesimage.jpeg" alt="image" className="h-[70px]" />

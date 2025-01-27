@@ -9,11 +9,18 @@ const RegisterPage = lazy(() => import("./pages/RegisterPage.jsx"));
 import { ToastContainer } from "react-toastify";
 
 import Loader from "./components/Loader/Loader.jsx";
+import CreateNotePage from "./pages/CreateNotePage.jsx";
 
 const App = () => {
   return (
     <BrowserRouter>
-      <ToastContainer position="top-center"  autoClose={1000} hideProgressBar={true} pauseOnHover={false} closeButton={false}/>
+      <ToastContainer
+        position="top-center"
+        autoClose={1000}
+        hideProgressBar={true}
+        pauseOnHover={false}
+        closeButton={false}
+      />
       <Header />
       <Routes>
         <Route
@@ -45,6 +52,14 @@ const App = () => {
           element={
             <Suspense fallback={<Loader />}>
               <RegisterPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/createnote"
+          element={
+            <Suspense fallback={<Loader />}>
+              <CreateNotePage />
             </Suspense>
           }
         />

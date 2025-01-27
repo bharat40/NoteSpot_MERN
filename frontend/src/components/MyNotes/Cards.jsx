@@ -28,7 +28,7 @@ const Cards = ({ title, content, category, date }) => {
           <p className="border-t pt-1">{content}</p>
 
           <div className="flex justify-between items-center">
-            <span className="text-slate-400 text-sm">Created on-{date}</span>
+            <i className="text-slate-400 text-sm">Created on-{date}</i>
             <div className="flex justify-end gap-3 mt-2 ">
               <button className="bg-green-400 hover:bg-green-500 text-white px-3  py-1 rounded">
                 Edit

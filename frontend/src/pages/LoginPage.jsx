@@ -61,7 +61,7 @@ const LoginPage = () => {
           <ErrorMessage message={error} />
         </div>
       )}
-      <div className="flex gap- px-[256px] items-center justify-between mt-[50px]">
+      <div className="flex gap-[120px]  items-center justify-center mt-[50px]">
         <form onSubmit={handleSubmit}>
           <div className="w-[500px] flex flex-col gap-6 bg-gray-100 p-3 rounded shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]">
             <div className="flex flex-col gap-2">
