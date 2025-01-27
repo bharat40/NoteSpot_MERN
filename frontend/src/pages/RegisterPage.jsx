@@ -77,7 +77,7 @@ const RegisterPage = () => {
                   setName(e.target.value);
                 }}
                 id="name"
-                className="px-2 py-1 border font-medium"
+                className="px-2 py-1 border"
                 placeholder="Enter your name"
               />
             </div>
@@ -93,7 +93,7 @@ const RegisterPage = () => {
                 onChange={(e) => {
                   setEmail(e.target.value);
                 }}
-                className="px-2 py-1 border font-medium"
+                className="px-2 py-1 border"
                 placeholder="Enter your email"
               />
             </div>
@@ -109,7 +109,7 @@ const RegisterPage = () => {
                   setPassword(e.target.value);
                 }}
                 id="password"
-                className="px-2 py-1 border font-medium"
+                className="px-2 py-1 border"
                 placeholder="Create your password"
               />
             </div>
@@ -125,7 +125,7 @@ const RegisterPage = () => {
                   setConfirmPassword(e.target.value);
                 }}
                 id="confirmPassword"
-                className="px-2 py-1 border font-medium"
+                className="px-2 py-1 border"
                 placeholder="Confirm your password"
               />
             </div>

@@ -76,7 +76,7 @@ const LoginPage = () => {
                   setEmail(e.target.value);
                 }}
                 id="email"
-                className="px-2 py-1 border font-medium"
+                className="px-2 py-1 border"
                 placeholder="Enter your email"
               />
             </div>
@@ -92,7 +92,7 @@ const LoginPage = () => {
                   setPassword(e.target.value);
                 }}
                 id="password"
-                className="px-2 py-1 border font-medium"
+                className="px-2 py-1 border "
                 placeholder="Enter your password"
               />
             </div>

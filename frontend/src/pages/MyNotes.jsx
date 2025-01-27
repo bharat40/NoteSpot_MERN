@@ -18,15 +18,19 @@ const MyNotes = () => {
     const { data } = await axios.get("http://localhost:5000/api/notes", config);
     setNotes(data);
   };
+  const handleDelete = (id) => {
+    setNotes((prevNotes) => prevNotes.filter((note) => note._id !== id));
+  };
   useEffect(() => {
     const userInfo = JSON.parse(localStorage.getItem("userInfo"));
     setUsername(userInfo.name);
     fetchNotes();
-  }, []);
+  }, [handleDelete]);
 
   const handleClick = () => {
     navigate("/createnote");
   };
+
   return (
     <div className="flex flex-col my-11 h-screen gap-5">
       <div className="flex justify-center">
@@ -48,10 +52,12 @@ const MyNotes = () => {
             return (
               <div key={n._id}>
                 <Cards
+                  id={n._id}
                   title={n.title}
                   content={n.content}
                   category={n.category}
                   date={n.createdAt.substring(0, 10)}
+                  onDelete={handleDelete}
                 />
               </div>
             );
