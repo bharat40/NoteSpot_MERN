@@ -3,6 +3,7 @@ import MainScreen from "../components/MainScreen/MainScreen";
 import Cards from "../components/MyNotes/Cards.jsx";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const MyNotes = () => {
   const [notes, setNotes] = useState([]);
@@ -20,6 +21,17 @@ const MyNotes = () => {
   };
   const handleDelete = (id) => {
     setNotes((prevNotes) => prevNotes.filter((note) => note._id !== id));
+    toast.success("Note Deleted Successful!");
+  };
+  const handleDeleteAll = async () => {
+    const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+    await axios.delete("http://localhost:5000/api/notes", config);
+    toast.success("All Notes Deleted Successful!");
   };
   useEffect(() => {
     const userInfo = JSON.parse(localStorage.getItem("userInfo"));
@@ -63,6 +75,14 @@ const MyNotes = () => {
             );
           })}
         </div>
+        {notes.length != 0 && (
+          <button
+            className="bg-red-500 hover:bg-red-600 px-2 py-1 rounded text-white mt-3"
+            onClick={handleDeleteAll}
+          >
+            delete all
+          </button>
+        )}
       </div>
     </div>
   );
