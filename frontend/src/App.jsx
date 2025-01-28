@@ -10,6 +10,7 @@ import { ToastContainer } from "react-toastify";
 
 import Loader from "./components/Loader/Loader.jsx";
 import CreateNotePage from "./pages/CreateNotePage.jsx";
+import ProfilePage from "./pages/ProfilePage.jsx";
 
 const App = () => {
   return (
@@ -60,6 +61,14 @@ const App = () => {
           element={
             <Suspense fallback={<Loader />}>
               <CreateNotePage />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <Suspense fallback={<Loader />}>
+              <ProfilePage />
             </Suspense>
           }
         />

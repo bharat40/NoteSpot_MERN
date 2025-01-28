@@ -29,6 +29,9 @@ const Header = () => {
       console.log("navigated to /mynotes");
     }
   };
+  const handleProfile = () => {
+    navigate("/profile");
+  };
   useEffect(() => {
     const userInfo = JSON.parse(localStorage.getItem("userInfo"));
     if (userInfo) {
@@ -74,7 +77,10 @@ const Header = () => {
           </button>
           {isOpen && (
             <div className="absolute shadow bg-white border flex flex-col justify-center gap-1 py-1 items-center top-7 w-[100px]">
-              <button className="hover:bg-gray-200 w-full active:bg-gray-300">
+              <button
+                className="hover:bg-gray-200 w-full active:bg-gray-300"
+                onClick={handleProfile}
+              >
                 Profile
               </button>
               <button

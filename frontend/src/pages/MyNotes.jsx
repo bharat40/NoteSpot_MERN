@@ -33,6 +33,11 @@ const MyNotes = () => {
     await axios.delete("http://localhost:5000/api/notes", config);
     toast.success("All Notes Deleted Successful!");
   };
+  const handleUpdate = (updatedNote) => {
+    setNotes(
+      notes.map((note) => (note._id === updatedNote._id ? updatedNote : note))
+    );
+  };
   useEffect(() => {
     const userInfo = JSON.parse(localStorage.getItem("userInfo"));
     setUsername(userInfo.name);
@@ -43,8 +48,9 @@ const MyNotes = () => {
     navigate("/createnote");
   };
 
+
   return (
-    <div className="flex flex-col my-11 h-screen gap-5">
+    <div className="flex flex-col  my-11 h-screen gap-5">
       <div className="flex justify-center">
         <MainScreen title={`WELCOME BACK ${username || "USER"}`} />
       </div>
@@ -70,6 +76,7 @@ const MyNotes = () => {
                   category={n.category}
                   date={n.createdAt.substring(0, 10)}
                   onDelete={handleDelete}
+                  onUpdate={handleUpdate}
                 />
               </div>
             );
