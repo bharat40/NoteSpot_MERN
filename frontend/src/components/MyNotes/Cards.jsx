@@ -17,7 +17,7 @@ const Cards = ({ id, title, content, category, date, onDelete, onUpdate }) => {
         Authorization: `Bearer ${userInfo.token}`,
       },
     };
-    await axios.delete(`http://localhost:5000/api/notes/${id}`, config);
+    await axios.delete(`https://notespot-mern-backend.onrender.com/api/notes/${id}`, config);
     onDelete(id);
     console.log("note deleted!");
   };
@@ -34,7 +34,7 @@ const Cards = ({ id, title, content, category, date, onDelete, onUpdate }) => {
         },
       };
       const { data } = await axios.put(
-        `http://localhost:5000/api/notes/${id}`,
+        `https://notespot-mern-backend.onrender.com/api/notes/${id}`,
         {
           title: editedTitle,
           content: editedContent,

@@ -16,7 +16,7 @@ const MyNotes = () => {
         Authorization: `Bearer ${userInfo.token}`,
       },
     };
-    const { data } = await axios.get("http://localhost:5000/api/notes", config);
+    const { data } = await axios.get("https://notespot-mern-backend.onrender.com/api/notes", config);
     setNotes(data);
   };
   const handleDelete = (id) => {
@@ -30,7 +30,7 @@ const MyNotes = () => {
         Authorization: `Bearer ${userInfo.token}`,
       },
     };
-    await axios.delete("http://localhost:5000/api/notes", config);
+    await axios.delete("https://notespot-mern-backend.onrender.com/api/notes", config);
     toast.success("All Notes Deleted Successful!");
   };
   const handleUpdate = (updatedNote) => {

@@ -39,7 +39,7 @@ const RegisterPage = () => {
       setLoading(true);
       // data fetch
       const { data } = await axios.post(
-        "http://localhost:5000/api/users/",
+        "https://notespot-mern-backend.onrender.com/api/users/",
         { name, email, password, picture },
         config
       );

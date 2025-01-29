@@ -28,7 +28,7 @@ app.use('/api/notes', noteRoutes);
 app.use(notFound);
 app.use(errorHandler);
 
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT || 5000, () => {
     try {
         console.log(`Server started on port ${process.env.PORT}`);
     } catch (error) {
