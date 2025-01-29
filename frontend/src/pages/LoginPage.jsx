@@ -29,7 +29,7 @@ const LoginPage = () => {
       setLoading(true);
       // data fetch
       const { data } = await axios.post(
-        "https://notespot-mern-backend.onrender.com/api/users/login",
+        "http://localhost:5000/api/users/login",
         {
           email,
           password,

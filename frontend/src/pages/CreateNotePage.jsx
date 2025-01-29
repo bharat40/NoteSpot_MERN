@@ -17,7 +17,7 @@ const CreateNotePage = () => {
       },
     };
     await axios.post(
-      "https://notespot-mern-backend.onrender.com/create",
+      "http://localhost:5000/api/notes/create",
       {
         title: title,
         content: content,
