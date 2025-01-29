@@ -39,7 +39,7 @@ const Header = () => {
     }
   });
   return (
-    <nav className="bg-blue-400 flex justify-center items-center gap-80 py-4 shadow-[rgba(50,50,93,0.25)_0px_6px_12px_-2px,_rgba(0,0,0,0.3)_0px_3px_7px_-3px]">
+    <nav className="bg-blue-400 flex justify-center items-center gap-80 py-4 ">
       <Link to="/">
         <div className="flex gap-1 justify-center items-center ">
           <img src="./logo.png" alt="logo" className="w-[50px] " />
