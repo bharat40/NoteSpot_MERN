@@ -1,3 +1,4 @@
+Live Link - https://notespot-frontend.onrender.com/
 # NoteSpot – Secure & Efficient Note-Keeping Application 📝
 
 NoteSpot is a modern, secure, and user-friendly note-keeping web application built with the MERN stack (MongoDB, Express.js, ReactJS, Node.js). It enables users to create, manage, and organize their notes effortlessly while ensuring data security through robust authentication and authorization mechanisms.
