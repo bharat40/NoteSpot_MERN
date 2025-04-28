@@ -34,7 +34,7 @@ const Cards = ({ id, title, content, category, date, onDelete, onUpdate }) => {
         },
       };
       const { data } = await axios.put(
-        `https://notespot-mern-backend.onrender.com/api/notes/${id}`,
+        `https://notespot-backend-cqdi.onrender.com/api/notes/${id}`,
         {
           title: editedTitle,
           content: editedContent,
