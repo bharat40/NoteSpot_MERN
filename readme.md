@@ -34,6 +34,48 @@ The frontend is built with ReactJS, ensuring a seamless and interactive user exp
 - 🎨 react-icons – Provides a variety of UI icons.
 - 🔔 react-toastify & toastify – Implements real-time notifications.
 
-## Feedback 🚀
 
-If you have any feedback, please reach out to me at bharatdhiman40@gmail.com
+
+# Installation
+#### 1. Clone the repository
+```
+   git clone https://github.com/bharat40/NoteSpot_MERN.git
+   cd NoteSpot_MERN
+```
+#### 2. Install dependencies for frontend & backend
+
+   ### For frontend
+   ```
+   cd client
+   npm install
+```
+   ### For backend
+   ```
+   cd ../server
+   npm install
+```
+#### 3. Create `.env` files for both client and server
+   Add your database URI, API keys, and environment variables.
+
+#### 4. Run the app
+
+   ### In /server directory
+   ```
+   npm run dev
+   ```
+
+   ### In /client directory
+   ```
+   npm start
+   ```
+    
+## Contributing
+
+- Contributions are always welcome!
+- Please fork the repo, create a feature branch, and submit a pull request.
+
+
+## Contact
+### For any queries or collaboration:
+- GitHub: [bharat40](https://github.com/bharat40)
+- Email: bharatdhiman40@gmail.com
